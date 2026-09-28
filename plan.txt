@@ -1,0 +1,12 @@
+Front-end:
+    3 html files (for now), index which takes you to the other 2, one is flashcards, one is timetable
+    need auth page (user logs into their account to access their flashcards/timetable)
+
+Logic:
+    Make the flashcards work, make the timetable logic (so user can create their own)
+    Make it as simlpe and intuitive as possible
+
+Back-end:
+    Server logic (when we get access to the credits)
+    Make the auth actually work properly
+    Store data in a db for each user
