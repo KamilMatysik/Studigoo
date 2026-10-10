@@ -1,0 +1,31 @@
+{
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  },
+  "name": "studigoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^9.14.0",
+    "undici-types": "^8.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KamilMatysik/Studigoo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KamilMatysik/Studigoo/issues"
+  },
+  "homepage": "https://github.com/KamilMatysik/Studigoo#readme"
+
+  
+}
