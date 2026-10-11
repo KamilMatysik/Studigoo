@@ -66,6 +66,7 @@ let email: String;
 interface User {
     email: String;
     pass: String;
+    sign: String;
 }
 const express = require("express");
 const app = express();
@@ -80,11 +81,23 @@ app.use(express.static("src"));
 //Gains user info
 app.post("/details", (req:any, res:any) => {
     const user:User = req.body;
-    testFunc(user);
+    //Check if users password is valid
+    if(testUserPassword(user.pass)){
+        if(user.sign == "in"){
+            //Sign User in
+        }
+        else{
+            //Sign User up
+        }
+    }
+    else{
+        //Find way to return password error
+    }
 })
 
-function testFunc(user:User){
-    console.log(user)
+function testUserPassword(pass: String){
+    //Build password testing logic later
+    return 1;
 }
 
 const PORT: any = process.env.PORT || 3000;

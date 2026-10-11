@@ -74,7 +74,6 @@ app.use(express.static("src"));
 //Gains user info
 app.post("/details", (req, res) => {
     const user = req.body;
-    console.log("WORKS I THINK");
     testFunc(user);
 });
 function testFunc(user) {

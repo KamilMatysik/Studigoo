@@ -6,7 +6,13 @@
     <title>Auth Page</title>
 </head>
 <body>
+    
     <form action="/details" method="post">
+        <label for="in">Sign In</label>
+        <input type="radio" id="in" name="sign" value="in" required>
+        <label for="up">Sign Up</label>
+        <input type="radio" id="up" name="sign" value="up" required><br>
+        
         Email
         <input type="email" id="email" name="email" required><br>
         Password
@@ -15,7 +21,7 @@
     </form>
 
     <script>
-        
+
 
     </script>
 </body>
