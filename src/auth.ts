@@ -61,12 +61,12 @@ firebase.auth().onAuthStateChanged((user) => {
     }
     
 })
-let email: String;
+
 //Using Express in Node to get POST data
 interface User {
-    email: String;
-    pass: String;
-    sign: String;
+    email: string;
+    pass: string;
+    sign: string;
 }
 const express = require("express");
 const app = express();
@@ -84,10 +84,10 @@ app.post("/details", (req:any, res:any) => {
     //Check if users password is valid
     if(testUserPassword(user.pass)){
         if(user.sign == "in"){
-            //Sign User in
+            signUserIn(user.email, user.pass);
         }
         else{
-            //Sign User up
+            signUserUp(user.email, user.pass);
         }
     }
     else{
@@ -95,7 +95,7 @@ app.post("/details", (req:any, res:any) => {
     }
 })
 
-function testUserPassword(pass: String){
+function testUserPassword(pass: string){
     //Build password testing logic later
     return 1;
 }

@@ -61,7 +61,6 @@ app_1.default.auth().onAuthStateChanged((user) => {
         //Add functionality
     }
 });
-let email;
 const express = require("express");
 const app = express();
 app.use(express.json());
@@ -74,10 +73,22 @@ app.use(express.static("src"));
 //Gains user info
 app.post("/details", (req, res) => {
     const user = req.body;
-    testFunc(user);
+    //Check if users password is valid
+    if (testUserPassword(user.pass)) {
+        if (user.sign == "in") {
+            signUserIn(user.email, user.pass);
+        }
+        else {
+            signUserUp(user.email, user.pass);
+        }
+    }
+    else {
+        //Find way to return password error
+    }
 });
-function testFunc(user) {
-    console.log(user);
+function testUserPassword(pass) {
+    //Build password testing logic later
+    return 1;
 }
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
