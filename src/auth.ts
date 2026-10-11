@@ -2,6 +2,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/analytics";
+import "express";
 //Add more SDKs here
 
 const firebaseConfig = {
@@ -15,12 +16,13 @@ const firebaseConfig = {
 };
 //Init FireBase
 firebase.initializeApp(firebaseConfig);
-const analytics = firebase.analytics();
-const auth = firebase.auth();
+//const analytics = firebase.analytics();
+//const auth = firebase.auth();
 
 //Code from FireBase docs that allows user to create new account
 //Need to create form in HTML that passes an email and password to here (ensure they are valid first)
-firebase.auth().createUserWithEmailAndPassword(email, password)
+function signUserUp(email: string, password: string){
+    firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
         //Signed in
         var user = userCredential.user
@@ -30,9 +32,11 @@ firebase.auth().createUserWithEmailAndPassword(email, password)
         var errorCode = error.code;
         var errorMessage = error.message;
     })
+}
 
-//Allow users to sign in
-firebase.auth().signInWithEmailAndPassword(email, password)
+function signUserIn(email: string, password: string){
+    //Allow users to sign in
+    firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
         //Signed in
         var user = userCredential.user;
@@ -42,6 +46,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
         var errorCode = error.code;
         var errorMessage = error.message;
     })
+}
 
 //Called when user's sign-in state changes
 firebase.auth().onAuthStateChanged((user) => {
@@ -55,4 +60,34 @@ firebase.auth().onAuthStateChanged((user) => {
         //Add functionality
     }
     
+})
+let email: String;
+//Using Express in Node to get POST data
+interface User {
+    email: String;
+    pass: String;
+}
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true}));
+app.use(express.static("src"));
+//In case it is needed in the future
+//app.get("/details", (req:any, res:any) => {
+//
+//});
+//Gains user info
+app.post("/details", (req:any, res:any) => {
+    const user:User = req.body;
+    testFunc(user);
+})
+
+function testFunc(user:User){
+    console.log(user)
+}
+
+const PORT: any = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
 })

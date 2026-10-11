@@ -29,3 +29,13 @@ When I was setting up the API, I saw that there was a choice between a modular A
 As it as bugging me, I sorted out the directory structure so everything will be much cleaner.
 
 The last thing that I will do today will be making a simple form for logging in that sends data back to go into creating accounts/logging in.
+
+#### 11/10
+The HTML form is made and now I need to work on the logic on sending it to the auth script to use. I will leave verifying the password (to make sure it meets requirements) for later.
+
+I know that I need to use a POST method as GET is not good for sensitive information (such as passwords).
+
+This means that I now need to set up NodeJS to handle this. I install Express.js as [this](https://www.geeksforgeeks.org/node-js/how-http-post-request-work-in-node-js/) article suggests.
+
+After ~2 hours with breaks, progress has been made however there are still bugs and it is not fully working. One problem I faced was that I was using the Live Server extension on VSCode that works over port 5500 but that seems not to work with Express so I am going to use Express to run it on port 3000.
+
