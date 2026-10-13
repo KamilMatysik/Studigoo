@@ -40,3 +40,13 @@ This means that I now need to set up NodeJS to handle this. I install Express.js
 After ~2 hours with breaks, progress has been made however there are still bugs and it is not fully working. One problem I faced was that I was using the Live Server extension on VSCode that works over port 5500 but that seems not to work with Express so I am going to use Express to run it on port 3000.
 
 Getting the users' inputs into the script works now, next I need to see if the Firebase functions work or if any extra work is needed. At the moment the program is barebones so there is no password checking or anything similar at the moment, but that will be added after the basics work as they should.
+
+When the user submits their sign in info, it correctly goes to Firebase and is stored there. I have not yet tested duplicate emails or any other possible bugs so I will work on that in the future.
+
+#### 13/10
+
+I want to do a few things but probably won't have the time to do all of it today. I want to try things like duplicates and also deleting data, but most importantly learn how to use this data. I will want in the future a database where each user has details stored so I need this to be implemented but for now I want to learn how.
+
+I found this [FireBase Article](https://firebase.google.com/docs/auth/flutter/errors) where it explains some of the error messages so I will use this to make my program return an error message, for now just in the script but in the future it will be sent back to be shown to the user on the website.
+
+I have a list of if statements for all the errors because that is the only method I can think of and I want to send the error to the HTML so I will add script logic that shows the error message to the user

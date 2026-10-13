@@ -32,8 +32,7 @@ function signUserUp(email, password) {
         //Add functionality here
     })
         .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        findError(error.code);
     });
 }
 function signUserIn(email, password) {
@@ -45,8 +44,7 @@ function signUserIn(email, password) {
         //Add functionality here
     })
         .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        findError(error.code);
     });
 }
 //Called when user's sign-in state changes
@@ -66,29 +64,42 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("src"));
-//In case it is needed in the future
-//app.get("/details", (req:any, res:any) => {
-//
-//});
 //Gains user info
 app.post("/details", (req, res) => {
     const user = req.body;
-    //Check if users password is valid
-    if (testUserPassword(user.pass)) {
-        if (user.sign == "in") {
-            signUserIn(user.email, user.pass);
-        }
-        else {
-            signUserUp(user.email, user.pass);
-        }
+    //Users password is checked for validity through a firebase error
+    if (user.sign == "in") {
+        signUserIn(user.email, user.pass);
     }
     else {
-        //Find way to return password error
+        signUserUp(user.email, user.pass);
     }
 });
-function testUserPassword(pass) {
-    //Build password testing logic later
-    return 1;
+//Function to manage failed Sign up/in attempt
+function findError(e) {
+    var userError = "";
+    if (e == "auth/email-already-in-use") {
+        userError = "Email entered is already in use.";
+    }
+    else if (e == "auth/internal-error") {
+        userError = "Internal Error.";
+    }
+    else if (e == "auth/invalid-email") {
+        userError = "Email entered is not valid";
+    }
+    else if (e == "auth/invalid-password") {
+        userError = "Password entered is not valid";
+    }
+    else if (e == "auth/password-does-not-meet-requirements") {
+        userError = "Password does not meet requirements";
+    }
+    else if (e == "auth/invalid-login-credentials") {
+        userError = "Invalid login credentials";
+    }
+    else {
+        console.log(`UNKNOWN ERROR: ${e}`);
+        userError = "Unknown Error";
+    }
 }
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
