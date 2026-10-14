@@ -49,4 +49,8 @@ I want to do a few things but probably won't have the time to do all of it today
 
 I found this [FireBase Article](https://firebase.google.com/docs/auth/flutter/errors) where it explains some of the error messages so I will use this to make my program return an error message, for now just in the script but in the future it will be sent back to be shown to the user on the website.
 
-I have a list of if statements for all the errors because that is the only method I can think of and I want to send the error to the HTML so I will add script logic that shows the error message to the user
+I have a list of if statements for all the errors because that is the only method I can think of and I want to send the error to the HTML so I will add script logic that shows the error message to the user.
+
+#### 14/10
+
+Today I really struggled with sending the data back to the frontend mainly because of my file structure so I decided to revamp that and I had to handle a few errors with Typescript that came from that revamping. I created a new auth.ts file concerned with only front end and now I need to send the error data from not renamed "server.ts" to the new auth file that can then be served to the user

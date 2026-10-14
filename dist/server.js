@@ -64,6 +64,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("src"));
+app.use(express.static("dist"));
 //Gains user info
 app.post("/details", (req, res) => {
     const user = req.body;
@@ -105,4 +106,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
 });
-//# sourceMappingURL=auth.js.map
+//# sourceMappingURL=server.js.map
