@@ -1,8 +1,8 @@
 //Adding SDKs
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import "firebase/compat/analytics";
-import "express";
 //Add more SDKs here
 
 
@@ -16,14 +16,15 @@ const firebaseConfig = {
     measurementId: "G-LWTKJ27D58"
 };
 //Init FireBase
-firebase.initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 //const analytics = firebase.analytics();
 //const auth = firebase.auth();
 
 //Code from FireBase docs that allows user to create new account
 //Need to create form in HTML that passes an email and password to here (ensure they are valid first)
 function signUserUp(email: string, password: string){
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         //Signed in
         var user = userCredential.user
@@ -35,8 +36,9 @@ function signUserUp(email: string, password: string){
 }
 
 function signUserIn(email: string, password: string){
+    const auth = getAuth();
     //Allow users to sign in
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         //Signed in
         var user = userCredential.user;
@@ -48,7 +50,8 @@ function signUserIn(email: string, password: string){
 }
 
 //Called when user's sign-in state changes
-firebase.auth().onAuthStateChanged((user) => {
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
     if(user){
         //User is signed in
         var uid = user.uid;
@@ -67,7 +70,7 @@ interface User {
     pass: string;
     sign: string;
 }
-const express = require("express");
+import express from "express"
 const app = express();
 app.use(express.json());
 

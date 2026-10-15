@@ -56,3 +56,7 @@ I have a list of if statements for all the errors because that is the only metho
 Today I really struggled with sending the data back to the frontend mainly because of my file structure so I decided to revamp that and I had to handle a few errors with Typescript that came from that revamping. I created a new auth.ts file concerned with only front end and now I need to send the error data from not renamed "server.ts" to the new auth file that can then be served to the user.
 
 Today I barely did anything because I faced errors at every step so the last thing I did was learn that since my server files are written in CommonJS it did the same for my front end files but it turns out browsers don't support CommonJS so I will need to figure out how to change my server.ts and tsconfig.json files to suit the format I need.
+
+#### 15/10
+
+I need to now convert my project from CommonJS to ESM which I learned is the new standard that will be very useful for the future.

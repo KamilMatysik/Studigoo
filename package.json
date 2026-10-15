@@ -7,7 +7,7 @@
   "name": "studigoo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "exports": "./index.js",
   "dependencies": {
     "body-parser": "^2.3.0",
     "express": "^5.3.0",
@@ -24,7 +24,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/KamilMatysik/Studigoo/issues"
   },
