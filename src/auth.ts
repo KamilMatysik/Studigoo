@@ -1,9 +1,22 @@
-var form = document.getElementById("detailForm")
-form!.addEventListener('submit', function(event) {
-    event.preventDefault();
-    document.forms[form: any]!.submit();
-});
 
+var form = document.getElementById("detailForm");
+
+function start(){
+
+    form!.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData:FormData = new FormData(form as HTMLFormElement);
+        fetch("/details", {
+            method: "POST", body: formData
+        })
+        .then(res => console.log(res.json()))
+        .then(data => console.log(data))
+        .catch(error => console.error(error))
+
+    });
+}
+start()
 //try {
 //    let res = fetch("/details")
 //    .then((body) =>{

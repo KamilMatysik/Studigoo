@@ -70,3 +70,5 @@ I had a small issue with Typescript and HTML compatability but adding a small th
 The page reloading has become a problem so I found [this](https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript) to solve it.
 
 This step has been really difficult and much more complicated than I thought. I have finally been able to send the data correctly but now the problem is properly reading it from the client-side script to show it to the user.
+
+Still stuck with this problem, I decided to submit the data not directly from the HTML form but using FormData in the client script. This still results in an error but now the two files are correctly communicating so hopefully I can soon sort out this part of the program.
