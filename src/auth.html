@@ -7,7 +7,7 @@
 </head>
 <body>
     
-    <form action="/details" method="post">
+    <form id="detailForm" action="/details" method="post">
         <label for="in">Sign In</label>
         <input type="radio" id="in" name="sign" value="in" required>
         <label for="up">Sign Up</label>
@@ -20,6 +20,6 @@
         <input type="submit" value="Submit">
     </form>
     <p id="errorMessage" style="color: red;">X</p>
-    <script src="src/auth.js"></script>
+    <script type="module" src="src/auth.js"></script>
 </body>
 </html>

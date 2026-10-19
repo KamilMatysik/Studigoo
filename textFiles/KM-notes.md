@@ -60,3 +60,13 @@ Today I barely did anything because I faced errors at every step so the last thi
 #### 15/10
 
 I need to now convert my project from CommonJS to ESM which I learned is the new standard that will be very useful for the future.
+
+[This article](https://tsmx.net/convert-existing-nodejs-project-from-commonjs-to-esm/) made converting very simple and now it seems to all be working. The next thing that needs to be done is sneding the error string from the server script to the client-side auth script.
+
+I had a small issue with Typescript and HTML compatability but adding a small thing into tsconfig.json [found here](https://bobbyhadz.com/blog/typescript-cannot-find-name-window-document) fixed it right away. I now just need to send the data as a response to the original POST request and then it should hopefully work.
+
+#### 19/10
+
+The page reloading has become a problem so I found [this](https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript) to solve it.
+
+This step has been really difficult and much more complicated than I thought. I have finally been able to send the data correctly but now the problem is properly reading it from the client-side script to show it to the user.

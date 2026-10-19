@@ -24,29 +24,13 @@ initializeApp(firebaseConfig);
 //Need to create form in HTML that passes an email and password to here (ensure they are valid first)
 function signUserUp(email: string, password: string){
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        //Signed in
-        var user = userCredential.user
-        //Add functionality here
-    })
-    .catch((error) => {
-        findError(error.code);
-    })
+    return createUserWithEmailAndPassword(auth, email, password)
 }
 
 function signUserIn(email: string, password: string){
     const auth = getAuth();
     //Allow users to sign in
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        //Signed in
-        var user = userCredential.user;
-        //Add functionality here
-    })
-    .catch((error) => {
-        findError(error.code);
-    })
+    return signInWithEmailAndPassword(auth, email, password)
 }
 
 //Called when user's sign-in state changes
@@ -81,14 +65,32 @@ app.use(express.static("dist"));
 //Gains user info
 app.post("/details", (req:any, res:any) => {
     const user:User = req.body;
+    let prom: any;
+    let e: string = "";
     //Users password is checked for validity through a firebase error
     if(user.sign == "in"){
-        signUserIn(user.email, user.pass);
+        prom = signUserIn(user.email, user.pass)
+        .then((userCredential) => {
+            //Signed in
+            var user = userCredential.user
+            //Add functionality here
+        })
+        .catch((error) =>{e = error.code;res.json({error: findError(e)})})
     }
     else{
-        signUserUp(user.email, user.pass);
+        prom = signUserUp(user.email, user.pass)
+        .then((userCredential) => {
+            //Signed in
+            var user = userCredential.user
+            //Add functionality here
+    })
+        .catch((error) =>{e = error.code;res.json({error: findError(e)})});
     }
+    
+    
 })
+
+
 //Function to manage failed Sign up/in attempt
 function findError(e: string){
     var userError: string = "";
@@ -102,6 +104,7 @@ function findError(e: string){
         console.log(`UNKNOWN ERROR: ${e}`);
         userError = "Unknown Error";
     }
+    return userError;
 }
 
 

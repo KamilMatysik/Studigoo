@@ -1,13 +1,7 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 //Adding SDKs
-const app_1 = __importDefault(require("firebase/compat/app"));
-require("firebase/compat/auth");
-require("firebase/compat/analytics");
-require("express");
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import "firebase/compat/analytics";
 //Add more SDKs here
 const firebaseConfig = {
     apiKey: "AIzaSyCDgY0nKwgosw1i6f8OKwu0K-ZgfdWNjLI",
@@ -19,36 +13,23 @@ const firebaseConfig = {
     measurementId: "G-LWTKJ27D58"
 };
 //Init FireBase
-app_1.default.initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 //const analytics = firebase.analytics();
 //const auth = firebase.auth();
 //Code from FireBase docs that allows user to create new account
 //Need to create form in HTML that passes an email and password to here (ensure they are valid first)
 function signUserUp(email, password) {
-    app_1.default.auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-        //Signed in
-        var user = userCredential.user;
-        //Add functionality here
-    })
-        .catch((error) => {
-        findError(error.code);
-    });
+    const auth = getAuth();
+    return createUserWithEmailAndPassword(auth, email, password);
 }
 function signUserIn(email, password) {
+    const auth = getAuth();
     //Allow users to sign in
-    app_1.default.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-        //Signed in
-        var user = userCredential.user;
-        //Add functionality here
-    })
-        .catch((error) => {
-        findError(error.code);
-    });
+    return signInWithEmailAndPassword(auth, email, password);
 }
 //Called when user's sign-in state changes
-app_1.default.auth().onAuthStateChanged((user) => {
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
     if (user) {
         //User is signed in
         var uid = user.uid;
@@ -59,7 +40,7 @@ app_1.default.auth().onAuthStateChanged((user) => {
         //Add functionality
     }
 });
-const express = require("express");
+import express from "express";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -68,12 +49,26 @@ app.use(express.static("dist"));
 //Gains user info
 app.post("/details", (req, res) => {
     const user = req.body;
+    let prom;
+    let e = "";
     //Users password is checked for validity through a firebase error
     if (user.sign == "in") {
-        signUserIn(user.email, user.pass);
+        prom = signUserIn(user.email, user.pass)
+            .then((userCredential) => {
+            //Signed in
+            var user = userCredential.user;
+            //Add functionality here
+        })
+            .catch((error) => { e = error.code; res.json({ error: findError(e) }); });
     }
     else {
-        signUserUp(user.email, user.pass);
+        prom = signUserUp(user.email, user.pass)
+            .then((userCredential) => {
+            //Signed in
+            var user = userCredential.user;
+            //Add functionality here
+        })
+            .catch((error) => { e = error.code; res.json({ error: findError(e) }); });
     }
 });
 //Function to manage failed Sign up/in attempt
@@ -101,6 +96,7 @@ function findError(e) {
         console.log(`UNKNOWN ERROR: ${e}`);
         userError = "Unknown Error";
     }
+    return userError;
 }
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
