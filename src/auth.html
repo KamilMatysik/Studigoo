@@ -6,7 +6,7 @@
     <title>Auth Page</title>
 </head>
 <body>
-    
+    <a style="text-decoration: none;" href="index.html"><--</a>
     <form id="detailForm" action="/details" method="post">
         <label for="in">Sign In</label>
         <input type="radio" id="in" name="sign" value="in" required>
@@ -17,9 +17,11 @@
         <input type="email" id="email" name="email" required><br>
         Password
         <input type="password" id="pass" name="pass" required><br>
+        Name
+        <input type="text" id="name" name="name" required><br>
         <input type="submit" value="Submit">
     </form>
-    <p id="errorMessage" style="color: red;">X</p>
+    <p id="errorMessage" style="color: red;"></p>
     <script type="module" src="src/auth.js"></script>
 </body>
 </html>

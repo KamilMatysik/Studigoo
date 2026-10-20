@@ -17,8 +17,6 @@ const firebaseConfig = {
 };
 //Init FireBase
 initializeApp(firebaseConfig);
-//const analytics = firebase.analytics();
-//const auth = firebase.auth();
 
 //Code from FireBase docs that allows user to create new account
 //Need to create form in HTML that passes an email and password to here (ensure they are valid first)
@@ -32,27 +30,13 @@ function signUserIn(email: string, password: string){
     //Allow users to sign in
     return signInWithEmailAndPassword(auth, email, password)
 }
-//No need to implement yet
-//Called when user's sign-in state changes
-//const auth = getAuth();
-//onAuthStateChanged(auth, (user) => {
-//    if(user){
-//        //User is signed in
-//        var uid = user.uid;
-//        //Add functionality
-//    }
-//    else{
-//        //User is signed out
-//        //Add functionality
-//    }
-//
-//})
 
 //Using Express in Node to get POST data
 interface User {
     email: string;
     pass: string;
     sign: string;
+    name: string
 }
 import express from "express"
 const app = express();
@@ -74,7 +58,9 @@ app.post("/details", (req:any, res:any) => {
             //Signed in
             var user = userCredential.user
             //Add functionality here
+            res.send(prom)
         })
+        //Catching error and sending it back to client
         .catch((error) =>{e = error.code;res.json({error: findError(e)})});
     }
     else{
@@ -83,11 +69,11 @@ app.post("/details", (req:any, res:any) => {
             //Signed in
             var user = userCredential.user
             //Add functionality here
+            res.send(prom)
     })
-        .catch((error) =>{e = error.code;res.json({error: findError(e)})});
+    //Catching error and sending it back to client
+    .catch((error) =>{e = error.code;res.json({error: findError(e)})});
     }
-    
-    
 })
 
 
@@ -106,6 +92,19 @@ function findError(e: string){
     }
     return userError;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -14,8 +14,6 @@ const firebaseConfig = {
 };
 //Init FireBase
 initializeApp(firebaseConfig);
-//const analytics = firebase.analytics();
-//const auth = firebase.auth();
 //Code from FireBase docs that allows user to create new account
 //Need to create form in HTML that passes an email and password to here (ensure they are valid first)
 function signUserUp(email, password) {
@@ -45,7 +43,9 @@ app.post("/details", (req, res) => {
             //Signed in
             var user = userCredential.user;
             //Add functionality here
+            res.send(prom);
         })
+            //Catching error and sending it back to client
             .catch((error) => { e = error.code; res.json({ error: findError(e) }); });
     }
     else {
@@ -54,7 +54,9 @@ app.post("/details", (req, res) => {
             //Signed in
             var user = userCredential.user;
             //Add functionality here
+            res.send(prom);
         })
+            //Catching error and sending it back to client
             .catch((error) => { e = error.code; res.json({ error: findError(e) }); });
     }
 });

@@ -77,4 +77,6 @@ Still stuck with this problem, I decided to submit the data not directly from th
 
 After back and forth understanding how to find the values of a promise I was finally able to receiver the error code into the client file and then able to display it to the user.
 
-Another error popped up becuase JSON.stringify(formData) was returning empty so I need to convert the formData to object to JSON which [this](https://www.xjavascript.com/blog/how-to-send-a-json-object-using-html-form-data/) can help me with
+Another error popped up becuase JSON.stringify(formData) was returning empty so I need to convert the formData to object to JSON which [this](https://www.xjavascript.com/blog/how-to-send-a-json-object-using-html-form-data/) can help me with.
+
+After 6 days of struggling with the same issue, I have finally solved it and now the error returns to the user, I will quickly add some extra logic explaining to user things like why their password is invalid but that will take 10 minutes max. After that I want to learn how the page knows a user is logged in and displays results unique to that user so that in the future I can use it to allow a user to view their flashcards or things like that.
