@@ -32,21 +32,21 @@ function signUserIn(email: string, password: string){
     //Allow users to sign in
     return signInWithEmailAndPassword(auth, email, password)
 }
-
+//No need to implement yet
 //Called when user's sign-in state changes
-const auth = getAuth();
-onAuthStateChanged(auth, (user) => {
-    if(user){
-        //User is signed in
-        var uid = user.uid;
-        //Add functionality
-    }
-    else{
-        //User is signed out
-        //Add functionality
-    }
-    
-})
+//const auth = getAuth();
+//onAuthStateChanged(auth, (user) => {
+//    if(user){
+//        //User is signed in
+//        var uid = user.uid;
+//        //Add functionality
+//    }
+//    else{
+//        //User is signed out
+//        //Add functionality
+//    }
+//
+//})
 
 //Using Express in Node to get POST data
 interface User {
@@ -75,7 +75,7 @@ app.post("/details", (req:any, res:any) => {
             var user = userCredential.user
             //Add functionality here
         })
-        .catch((error) =>{e = error.code;res.json({error: findError(e)})})
+        .catch((error) =>{e = error.code;res.json({error: findError(e)})});
     }
     else{
         prom = signUserUp(user.email, user.pass)

@@ -1,6 +1,6 @@
 //Adding SDKs
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import "firebase/compat/analytics";
 //Add more SDKs here
 const firebaseConfig = {
@@ -27,19 +27,6 @@ function signUserIn(email, password) {
     //Allow users to sign in
     return signInWithEmailAndPassword(auth, email, password);
 }
-//Called when user's sign-in state changes
-const auth = getAuth();
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        //User is signed in
-        var uid = user.uid;
-        //Add functionality
-    }
-    else {
-        //User is signed out
-        //Add functionality
-    }
-});
 import express from "express";
 const app = express();
 app.use(express.json());

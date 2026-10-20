@@ -72,3 +72,9 @@ The page reloading has become a problem so I found [this](https://www.tutorialsp
 This step has been really difficult and much more complicated than I thought. I have finally been able to send the data correctly but now the problem is properly reading it from the client-side script to show it to the user.
 
 Still stuck with this problem, I decided to submit the data not directly from the HTML form but using FormData in the client script. This still results in an error but now the two files are correctly communicating so hopefully I can soon sort out this part of the program.
+
+#### 20/10
+
+After back and forth understanding how to find the values of a promise I was finally able to receiver the error code into the client file and then able to display it to the user.
+
+Another error popped up becuase JSON.stringify(formData) was returning empty so I need to convert the formData to object to JSON which [this](https://www.xjavascript.com/blog/how-to-send-a-json-object-using-html-form-data/) can help me with
