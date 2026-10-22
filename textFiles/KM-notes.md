@@ -80,3 +80,7 @@ After back and forth understanding how to find the values of a promise I was fin
 Another error popped up becuase JSON.stringify(formData) was returning empty so I need to convert the formData to object to JSON which [this](https://www.xjavascript.com/blog/how-to-send-a-json-object-using-html-form-data/) can help me with.
 
 After 6 days of struggling with the same issue, I have finally solved it and now the error returns to the user, I will quickly add some extra logic explaining to user things like why their password is invalid but that will take 10 minutes max. After that I want to learn how the page knows a user is logged in and displays results unique to that user so that in the future I can use it to allow a user to view their flashcards or things like that.
+
+I will now begin setting up the database with Firebase and try to link user data with their account. I am assuming this will take a substantial amount of time as I need to learn how to do it and then actually do it. [This video](https://www.youtube.com/watch?v=2ciHixbc4HE&t=0s) is what I am using to help me do this.
+
+The big choice I am faced with is whether to use Firestore or the realtime database, but after reading from a few sources and consulting with team members, I believe that Firestore is better for the project.
