@@ -20,6 +20,20 @@ button{
     font-family: Studigoo;
 
 }
+.logincontent{
+    margin-top: 5rem;
+    text-align: center;
+ padding-bottom: 100%;
+
+}
+.logintext{
+    
+}
+input[type="radio"]{
+    background: red;
+
+}
+
 .mainbuttons{
     size: 4rem;
 }
@@ -48,5 +62,5 @@ animation-duration: 2s;
 }
 @font-face {
   font-family: Studigoo;
-  src: url(Studigoo.ttf); /* url of the font */
+  src: url(../fonts/Studigoo.ttf); /* url of the font */
 }

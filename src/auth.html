@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="csssheet.css">
     <title>Auth Page</title>
 </head>
 <body>
     <a style="text-decoration: none;" href="index.html"><--</a>
+    <div class=" logincontent">
     <form id="detailForm" action="/details" method="post">
-        <label for="in">Sign In</label>
+        <label for="in" class="logintext">Sign In</label>
         <input type="radio" id="in" name="sign" value="in" required>
-        <label for="up">Sign Up</label>
-        <input type="radio" id="up" name="sign" value="up" required><br>
+        <label for="up" class="logintext">Sign Up</label>
+        <input type="radio" id="up" name="sign" value="up" required class="logintext"><br>
         
         Email
-        <input type="email" id="email" name="email" required><br>
+        <input type="email" id="email" name="email" required class="logintext"><br>
         Password
-        <input type="password" id="pass" name="pass" required><br>
+        <input type="password" id="pass" name="pass" required class="logintext"><br>
         Name
-        <input type="text" id="name" name="name" required><br>
+        <input type="text" id="name" name="name" required class="logintext"><br>
         <input type="submit" value="Submit">
     </form>
     <p id="errorMessage" style="color: red;"></p>
+    </div>
     <script type="module" src="src/auth.js"></script>
 </body>
 </html>

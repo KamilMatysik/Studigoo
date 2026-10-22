@@ -46,6 +46,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static("src"));
 app.use(express.static("dist"));
 
+
 //Gains user info
 app.post("/details", (req:any, res:any) => {
     const user:User = req.body;
