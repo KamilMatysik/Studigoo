@@ -45,6 +45,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static("src"));
 app.use(express.static("dist"));
+app.use(express.static("misc"));
 
 
 //Gains user info
