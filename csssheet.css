@@ -1,10 +1,52 @@
+@keyframes titleanimation {
+    0%{transform: rotate(0deg) scale(1.0);
+    }
+    25%{transform: rotate(1deg);}
+    50%{transform: rotate(0deg)  scale(1.025);
+    }
+75%{transform: rotate(-1deg) scale(0.975);}
+    100%{
+    transform: rotate(0deg) scale(1.0);
+    }
+}
+@keyframes bodyanimation{
+    0%{background-color: #7b8fec;}
+    50%{background-color: rgb(241, 241, 255);}
+    100%{background-color: #d0d9ff;}
+}
+button{
+
+    border: 0;
+    font-family: Studigoo;
+
+}
+.mainbuttons{
+    size: 4rem;
+}
+body{
+    align-items: center;
+    justify-content: center; 
+}
 h1 {
     color: blue;
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: Studigoo, Arial, sans-serif;
+    font-size: 5rem;
+    margin-top: 1rem;
+    animation-name: titleanimation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function:cubic-bezier(0.05, 0.04, 0.4, 0.02);
+
 }
+
 body {
+animation-name: bodyanimation;
+animation-duration: 2s;
+ background-color: #d0d9ff;
 
-    background-color: #d0d9ff;
-
+}
+@font-face {
+  font-family: Studigoo;
+  src: url(Studigoo.ttf); /* url of the font */
 }
